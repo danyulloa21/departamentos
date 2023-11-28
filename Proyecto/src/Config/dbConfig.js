@@ -5,7 +5,8 @@ const dbConfig = {
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'departamentos'
+  database: 'departamentos',
+  multipleStatements: true, // Habilita el soporte para múltiples consultas
 };
 
 const connection = mysql.createConnection(dbConfig);

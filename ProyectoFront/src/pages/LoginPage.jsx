@@ -14,9 +14,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { login } from '../servicios/api';
+import { login } from '../servicios/API-Inquilinos/api_Inquilinos';
 import { useNavigate } from 'react-router-dom';
-
+import { useAppContext } from '../AppContext';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -34,8 +34,13 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
+
+
 export default function LoginPage() {
   const nav = useNavigate();
+  const { user, setUser } = useAppContext();
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -47,8 +52,15 @@ export default function LoginPage() {
 
     login(userData).then((res) => {
       alert('Inicio de Sesion Exitoso');
-      console.log(res);
-      nav('/dashboard', {state: res});
+      // console.log(res);
+      
+      setUser(res);
+      if (res.usertype.userTypeName === "INQUILINO") {
+        nav('/dashboard', {state: res});
+      } else {
+        nav('/admin-deudas');
+      }
+      console.log(user);
       
     }).catch((err) => {
       alert(err);
@@ -81,7 +93,25 @@ export default function LoginPage() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                mb: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+                fontSize: "35px"
+              }}
+            >
+              DEPARTAMENTOS
+            </Typography>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -113,10 +143,6 @@ export default function LoginPage() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
@@ -125,18 +151,6 @@ export default function LoginPage() {
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
