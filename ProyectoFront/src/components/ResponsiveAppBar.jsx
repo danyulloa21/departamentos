@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../AppContext";
 import SessionExpiredPopup from "./SessionExpiredPopup";
 
-const pagesInquilino = ["Deudas", "Historial de Pagos", "Avisos"];
+const pagesInquilino = ["Deudas", "Historial de Pagos", "Avisos", "Reglas"];
 const pagesAdmin = ["Deudas", "Historial de Pagos", "Contratos", "Residencias", "Avisos", "Reglas"];
 const settings = ["Cuenta", "Cerrar Sesión"];
 
@@ -25,6 +25,7 @@ function ResponsiveAppBar() {
   const { user, handleLogout } = useAppContext();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

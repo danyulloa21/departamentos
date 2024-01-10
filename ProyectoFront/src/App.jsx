@@ -15,6 +15,7 @@ import ContractsAdmin from './pages/Admin/ContractsAdmin'
 import ResidencesAdmin from './pages/Admin/ResidencesAdmin'
 import WarningsAdmin from './pages/Admin/WarningsAdmin'
 import RulesAdmin from './pages/Admin/RulesAdmin'
+import RulesPage from './pages/Inquilino/RulesPage'
 
 function App() {
   
@@ -30,7 +31,7 @@ function App() {
             <Route path="/deudas" Component={DebtsDetails} />
             <Route path="/pagos" Component={PaymentHistory} />
             <Route path="/avisos" Component={WarningsPage} />
-            <Route path="/reglas" Component={UserRules} />
+            <Route path="/reglas" Component={RulesPage} />
             <Route path="/admin-deudas" Component={DebtsAdmin} />
             <Route path="/admin-pagos" Component={PaymentsAdmin} />
             <Route path="/admin-contratos" Component={ContractsAdmin} />

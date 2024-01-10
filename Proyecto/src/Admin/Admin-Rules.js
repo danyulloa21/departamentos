@@ -25,7 +25,7 @@ router.post("/admin-rules", (req, res) => {
         } else {
           res.json({
             success: false,
-            message: "No se encontraron Avisos",
+            message: "No se encontraron Reglas",
           });
         }
       }

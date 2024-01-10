@@ -10,7 +10,7 @@ const opt = {
   insertarregistro: "insertarregistro",
   eliminnarregistro: "eliminarregistro"
 }
-const RulesAdmin = () => {
+const RulesPage = () => {
 const [rules, setRules] = useState([]);
 const [message, setMessage] = useState("");
 const [openModal, setOpenModal] = useState(false);
@@ -89,14 +89,6 @@ const generateRules = () => {
   return (
     <>
       <ResponsiveAppBar />
-      <Button
-        style={{marginLeft: "30px", marginTop: "30px"}}
-        variant="contained"
-        color="primary"
-        onClick={() => handleAgregarRegla()}
-      >
-        Agregar Regla
-      </Button>
       <Typography margin="30px" variant="h3">
         Reglas
       </Typography>
@@ -139,13 +131,7 @@ const generateRules = () => {
         style={{marginLeft: "18px"}}>
         {rules.map((rule) => (
           <ListItem key={rule.idRule}>
-            <ListItemText primary={rule.rule} />
-            <IconButton
-                color="secondary"
-                onClick={() => handleEliminarRegla(rule.idRule)}
-              >
-                <Delete />
-              </IconButton>
+            <ListItemText primary={rule.rule} />           
           </ListItem>
         ))}
       </List>
@@ -158,4 +144,4 @@ const generateRules = () => {
   );
 }
 
-export default RulesAdmin;
+export default RulesPage;

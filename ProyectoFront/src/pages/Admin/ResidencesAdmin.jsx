@@ -298,6 +298,7 @@ const ResidencesAdmin = () => {
 
   const handleCloseDialogDepartaments = () => {
     setOpenDialogDepartaments(false);
+    setAvalaibleDepartaments([]);
   };
   
   const handleOpenDialogInsertDepartament = () => {

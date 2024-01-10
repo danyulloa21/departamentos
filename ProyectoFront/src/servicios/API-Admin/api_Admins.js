@@ -102,5 +102,25 @@ export const ApiWarningsAdmin = async (id) => {
     throw error;
   }
 };
+export const ApiRulesAdmin = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/admin-rules`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(id)
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error(await response.json()); // Invoke response.json() as a function
+    }
+  } catch (error) {
+    throw error;
+  }
+};
 
 
