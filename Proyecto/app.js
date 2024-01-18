@@ -48,7 +48,18 @@ app.use(('/api'), AdminResidences);
 app.use(('/api'), AdminWarnings);
 app.use(('/api'), AdminRules);
 
+class App {
+  constructor() {
+    // ... constructor logic
+  }
 
+  // ... other methods
+}
+
+// Export the App constructor
+module.exports = {
+  App: App,
+};
 
 // Inicia el servidor
 const PORT = process.env.PORT || 3000;
