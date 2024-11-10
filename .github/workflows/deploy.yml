@@ -13,12 +13,32 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: |
+        cd ProyectoFront  # Si tu proyecto de React está dentro de la carpeta ProyectoFront
+        npm install
+
+    - name: Build app
+      run: |
+        cd ProyectoFront  # Asegúrate de estar en la carpeta donde se encuentra tu app
+        npm run build
+
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+    - name: Add SSH host to known hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H 20.83.184.2 >> ~/.ssh/known_hosts
+
     - name: Deploy to server
       run: |
-        scp -r ./dist/* dulloa@20.83.184.2:/var/www/departamentos/ProyectoFront/dist
+        scp -r ProyectoFront/dist/* dulloa@20.83.184.2:/var/www/departamentos/ProyectoFront/dist
         ssh dulloa@20.83.184.2 'sudo systemctl restart nginx'
