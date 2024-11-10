@@ -109,7 +109,7 @@ export default function LoginPage() {
                 fontSize: "35px"
               }}
             >
-              DEPARTAMENTOS EDITADO
+              DEPARTAMENTOS Probando
             </Typography>
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
