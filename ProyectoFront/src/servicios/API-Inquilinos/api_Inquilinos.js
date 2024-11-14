@@ -1,6 +1,8 @@
 // api.js
 
-const BASE_URL = 'http://localhost:3000'; // Cambia esto a la URL de tu servidor de API
+// const BASE_URL = 'http://localhost:3000'; // Cambia esto a la URL de tu servidor de API
+// const BASE_URL = 'http://20.83.184.2'; // Cambia esto a la URL de tu servidor de API
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 // Función para iniciar sesión
 export const login = async (credentials) => {
