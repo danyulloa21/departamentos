@@ -59,14 +59,19 @@ function DebtsDetails() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {detallesDeudas.map((debt, index) => (
+                {Array.isArray(detallesDeudas) ? 
+                detallesDeudas.map((debt, index) => {
                   <TableRow key={index}>
                     <TableCell>{debt.concept}</TableCell>
                     <TableCell>{new Date(debt.debtDate).toLocaleDateString()}</TableCell>   
                     <TableCell>{debt.amount}</TableCell>
                     <TableCell>{debt.status}</TableCell>
+                  </TableRow> 
+                } ) :
+                  <TableRow>
+                    <TableCell>No hay deudas registradas</TableCell>
                   </TableRow>
-                ))}
+                }
               </TableBody>
             </Table>
           </TableContainer>

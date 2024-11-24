@@ -133,8 +133,8 @@ function WarningsPage() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {avisos.map((aviso) => (
-                <TableRow key={aviso.idWarning} style={{ background: getRowBackgroundColor(aviso.importanceLevel) }}>
+              {avisos.map((aviso, indice) => (
+                <TableRow key={indice} style={{ background: getRowBackgroundColor(aviso.importanceLevel) }}>
                   <TableCell>{aviso.departamentNumber}</TableCell>
                   <TableCell>{aviso.name}</TableCell>
                   <TableCell>{aviso.surname}</TableCell>

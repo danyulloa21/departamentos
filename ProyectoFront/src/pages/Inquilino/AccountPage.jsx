@@ -12,6 +12,24 @@ const AccountPage = () => {
   const { user } = useAppContext();
   const [accountInfo, setAccountInfo] = useState({});
   const [userPhones, setUserPhones] = useState({})
+  const [loading, setLoading] = useState(true);
+
+
+  // if (loading) {
+  //   return (
+  //     <>
+  //       <ResponsiveAppBar userInfo={user}/>
+  //       <Container maxWidth="md">
+  //         <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
+  //           <Typography variant="h4" gutterBottom>
+  //             Información de la Cuenta
+  //           </Typography>
+  //           <Typography>Cargando...</Typography>
+  //         </Paper>
+  //       </Container>
+  //     </>
+  //   );
+  // }
 
   // useEffect(() => {
   //   console.log(accountInfo);
@@ -21,11 +39,12 @@ const AccountPage = () => {
   useEffect(() => {
     if (user && user.idUser) {
       // Llama a getAccountInfo cuando el usuario se carga por primera vez
-
+      console.log(user);
       const data = {userid: user.idUser};
 
       getAccountInfo(data)
         .then((res) => {
+          console.log(res);
           const {userinfo , phones} = res;
           setAccountInfo(userinfo);
           setUserPhones(phones);
@@ -33,9 +52,14 @@ const AccountPage = () => {
         })
         .catch((e) => {
           console.error(e);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   }, [user]);
+
+  
 
 
   return (

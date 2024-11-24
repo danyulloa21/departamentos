@@ -94,24 +94,7 @@ const handleInsertNewContract = () => {
   // console.log(newContract);
   insertNewContract();
 
-  setNewContract({
-    name: '',
-    surname: '',
-    secondSurname: '',
-    email: '',
-    country: '',
-    state: '',
-    city: '',
-    job: '',
-    bloodType: '',
-    socialSecurity: '',
-    birthday: '',
-    INEnumber: '',
-    personalPhone: '',
-    emergencyPhone: '',
-    residence: '',
-    departament: '',
-  });
+  
   
 }
 
@@ -335,8 +318,30 @@ const handleCloseConfirmationContract = () => {
     ApiContractsAdmin(data).then(res => {
       if (res.success) {
         // alert(res.message);
+        console.log(res);
         setDataAccount(res.data);
         handleOpenConfirmationContract();
+
+
+
+        setNewContract({
+          name: '',
+          surname: '',
+          secondSurname: '',
+          email: '',
+          country: '',
+          state: '',
+          city: '',
+          job: '',
+          bloodType: '',
+          socialSecurity: '',
+          birthday: '',
+          INEnumber: '',
+          personalPhone: '',
+          emergencyPhone: '',
+          residence: '',
+          departament: '',
+        });
         
       } else {
         console.log(res.message);
