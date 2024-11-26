@@ -1148,8 +1148,7 @@ const handleCloseConfirmationContract = () => {
                     <DialogContent>
                       <DialogContentText id="alert-dialog-description">
                         El contrato se ha generado correctamente. Tu nombre de
-                        usuario es: {dataAccount.username}
-                        tu contraseña es: {dataAccount.password}
+                        usuario es: {dataAccount.username} tu contraseña es: {dataAccount.password}
                       </DialogContentText>
                     </DialogContent>
                     <DialogActions>

@@ -20,6 +20,7 @@ function DebtsDetails() {
       const idUserInfo = { userid: user.idUser };
       getAccountInfo(idUserInfo)
         .then((res) => {
+          // console.log(res);
           const { userinfo } = res;
           const idUserDepartment = userinfo.idUserDepartament
           // console.log(idUserDepartment)
@@ -28,7 +29,7 @@ function DebtsDetails() {
           };
           getDebtDetails(idData)
             .then((res2) => {
-              // console.log(res2);
+              console.log(res2);
               setdetallesDeudas(res2);
             })
             .catch((err) => {
@@ -59,19 +60,19 @@ function DebtsDetails() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Array.isArray(detallesDeudas) ? 
-                detallesDeudas.map((debt, index) => {
+              {Array.isArray(detallesDeudas) && detallesDeudas.length > 0 ? 
+                detallesDeudas.map((debt, index) => (
                   <TableRow key={index}>
                     <TableCell>{debt.concept}</TableCell>
                     <TableCell>{new Date(debt.debtDate).toLocaleDateString()}</TableCell>   
                     <TableCell>{debt.amount}</TableCell>
                     <TableCell>{debt.status}</TableCell>
                   </TableRow> 
-                } ) :
-                  <TableRow>
-                    <TableCell>No hay deudas registradas</TableCell>
-                  </TableRow>
-                }
+                )) :
+                <TableRow>
+                  <TableCell colSpan={4} align="center">No hay deudas registradas</TableCell>
+                </TableRow>
+              }
               </TableBody>
             </Table>
           </TableContainer>

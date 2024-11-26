@@ -75,7 +75,10 @@ const DebtsAdmin = () => {
 
     ApiDebtsAdmin(opt).then(res => {
       setdepartamentosDisponibles(res);
-    }).catch(err => alert(err));
+    }).catch(err => {
+      console.log("Error al cargar departamentos disponibles");
+      alert("Error al cargar departamentos disponibles" + err)
+    });
 
 
   };
@@ -136,7 +139,7 @@ const DebtsAdmin = () => {
 
   const handleInsertNewDebt = () => {
     // Implement logic to insert the new debt (you might want to update the API for this)
-    console.log("Insert new debt:", newDebt);
+    console.log("Insert new debt");
 
     const data = {
       opt : 'insertarregistro',
