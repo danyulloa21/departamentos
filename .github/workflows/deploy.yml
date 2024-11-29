@@ -20,12 +20,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd ProyectoFront  # Si tu proyecto de React está dentro de la carpeta ProyectoFront
         npm install
 
     - name: Build app
       run: |
-        cd ProyectoFront  # Asegúrate de estar en la carpeta donde se encuentra tu app
         npm run build
 
     - name: Set up SSH keys
@@ -40,5 +38,5 @@ jobs:
 
     - name: Deploy to server
       run: |
-        scp -r ProyectoFront/dist/* dulloa@20.83.184.2:/var/www/departamentos/ProyectoFront/dist
+        scp -r dist/* dulloa@20.83.184.2:/var/www/departamentos/dist
         ssh dulloa@20.83.184.2 'sudo systemctl restart nginx'
