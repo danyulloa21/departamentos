@@ -51,8 +51,9 @@ export default function LoginPage() {
     };
 
     login(userData).then((res) => {
-      alert('Inicio de Sesion Exitoso');
+      // alert('Inicio de Sesion Exitoso');
       // console.log(res);
+      // return;
       
       setUser(res);
       if (res.usertype.userTypeName === "INQUILINO") {
